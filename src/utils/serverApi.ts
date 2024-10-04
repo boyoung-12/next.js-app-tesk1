@@ -36,9 +36,13 @@ export async function getChampions() {
     return { message: "에러입니다" };
   }
 
-  const data: Champion = await res.json();
+  const response: Champion = await res.json();
 
-  return { data };
+  const championsArray = Object.values(response.data);
+
+  // console.log("championsArray", championsArray);
+
+  return { data: championsArray };
 }
 
 //특정 챔피언 상세 정보 API 엔드포인트
@@ -53,9 +57,11 @@ export async function getChampionDetail(id: string) {
   if (!res.ok) {
     return { message: "에러입니다" };
   }
-  //아이디가 유요하지 않을경우 에러메세지와 상태코드 반환로직 필요
+  //이게 아이디가 유효하지 않으면 반환로직 맞나..?
 
   const data: ChampionDetail = await res.json();
+
+  //왜 콘솔이 안찍
 
   return { data };
 }
@@ -69,26 +75,22 @@ export async function getItems() {
     {}
   );
 
-  const data: Item = await res.json();
+  const response: Item = await res.json();
 
-  return { data };
+  const ItemsArray = Object.values(response.data);
+
+  // console.log("ItemsArray", ItemsArray);
+  //여기도 콘솔이 안찍힘
+
+  return { data: ItemsArray };
 }
 
-// export async function getItems() {
-//   try {
-//     const res = await fetch(
-//       "https://ddragon.leagueoflegends.com/cdn/14.19.1/data/ko_KR/item.json",
-//       {}
-//     );
-//     const data: Item = await res.json();
+// const obj = {
+//     "1": {
+//     "abc": "123"
+//     }
+//     }
 
-//     return { data };
-//   } catch (error) {
-//     return (
-//       { message: error.status.message }, //여기만 왜?
-//       {
-//         status: error.status.status_code,
-//       }
-//     );
-//   }
-// }
+// 로테이션(넘버)이랑 챔피언목록(스트링)이랑 서로 타입이 다르기 때문에 이거 일치시켜줘야되고 나중에
+// 그리고 챔피언 key값이 key가 로테이션에서 key값 freeChampionIds와 똑같은거임 이부분 주의해서 일치시켜줘야함
+//     Object.values(obj) 이렇게 해주면 객체로 되어있는 형식을 배열로 만들어줌

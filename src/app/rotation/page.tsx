@@ -2,6 +2,7 @@
 
 import React from "react";
 
+//https://kr.api.riotgames.com/lol/platform/v3/champion-rotations 로테이션응답
 const RotationPage = () => {
   return <div>로테이션페이지</div>;
 };

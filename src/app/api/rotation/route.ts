@@ -18,10 +18,11 @@ export async function GET() {
     return NextResponse.json({ data });
   } catch (error) {
     return NextResponse.json(
-      { message: error.status.message },
-      {
-        status: error.status.status_code,
-      }
+      { error }
+      // { message: error.status.message },
+      // {
+      //   status: error.status.status_code,
+      // }
     );
   }
 }

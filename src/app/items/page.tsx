@@ -5,13 +5,23 @@ import { getItems } from "@/utils/serverApi";
 // @를 써주면 현재 내 폴더를 기준으로 경로를 설정하는게 아니라 @자체가 src을 뜻하기 때문에 src를 기준으로 더 쉽게 해당경로를 찾을 수 있게된다.
 //이건  tsconfih.json에서 path 부분을 보면 어떻게 쓸건인지 확인가능
 
+//https://ddragon.leagueoflegends.com/cdn/14.19.1/data/ko_KR/item.json 아이템목록
 const ItemsPage = async () => {
   const { data } = await getItems();
+  // console.log("data", data);
+  //왜여기선 콘솔이 터미널에 찍히지?
+  console.log("데이타타", data);
 
   return (
     <div>
       <div>아이템 목록</div>
-      <div>{data.data["1001"].name}</div>
+      <div className="bg-red-400 w-44 h-72">
+        <div className="bg-red-600  w-32 h-32">사진</div>
+        <h1>{data.name}</h1>
+        <p>가격</p>
+        <p>팔때</p>
+        <p>어쩌구모드</p>
+      </div>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import { getCham } from "@/utils/serverApi";
+import { getChampionDetail } from "@/utils/serverApi";
 
 const ChampionsDetailPage = async (id) => {
   const { data } = await getChampionDetail(id);

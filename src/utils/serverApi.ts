@@ -40,8 +40,6 @@ export async function getChampions() {
 
   const championsArray = Object.values(response.data);
 
-  // console.log("championsArray", championsArray);
-
   return { data: championsArray };
 }
 
@@ -57,13 +55,10 @@ export async function getChampionDetail(id: string) {
   if (!res.ok) {
     return { message: "에러입니다" };
   }
-  //이게 아이디가 유효하지 않으면 반환로직 맞나..?
 
-  const data: ChampionDetail = await res.json();
+  const response: ChampionDetail = await res.json();
 
-  //왜 콘솔이 안찍
-
-  return { data };
+  return { data: response.data[id] };
 }
 
 //아이템 목록 API 엔드포인트
@@ -79,7 +74,7 @@ export async function getItems() {
 
   const ItemsArray = Object.values(response.data);
 
-  // console.log("ItemsArray", ItemsArray);
+  console.log("ItemsArray", ItemsArray);
   //여기도 콘솔이 안찍힘
 
   return { data: ItemsArray };

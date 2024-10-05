@@ -22,12 +22,34 @@ export interface Champion {
 }
 
 export interface ChampionDetail {
+  type: string;
+  format: string;
+  version: string;
   data: {
-    [key: string]: {
+    [championName: string]: ChampionData;
+  };
+}
+
+interface ChampionData {
+  id: string;
+  key: string;
+  name: string;
+  title: string;
+  image: {
+    full: string;
+    sprite: string;
+    group: string;
+    x: number;
+    y: number;
+    w: number;
+    h: number;
+  };
+  lore: string;
+  spells: [
+    {
       id: string;
-      key: string;
       name: string;
-      title: string;
+      description: string;
       image: {
         full: string;
         sprite: string;
@@ -37,23 +59,47 @@ export interface ChampionDetail {
         w: number;
         h: number;
       };
-      lore: string;
-      spells: [
-        {
-          id: string;
-          name: string;
-          description: string;
-          image: {
-            full: string;
-            sprite: string;
-            group: string;
-            x: number;
-            y: number;
-            w: number;
-            h: number;
-          };
-        }
-      ];
-    };
-  };
+    }
+  ];
 }
+
+export interface PropsForChampionDetail {
+  params: { id: string };
+}
+
+// export interface ChampionDetail {
+//   data: {
+//     [key: string]: {
+//       id: string;
+//       key: string;
+//       name: string;
+//       title: string;
+//       image: {
+//         full: string;
+//         sprite: string;
+//         group: string;
+//         x: number;
+//         y: number;
+//         w: number;
+//         h: number;
+//       };
+//       lore: string;
+//       spells: [
+//         {
+//           id: string;
+//           name: string;
+//           description: string;
+//           image: {
+//             full: string;
+//             sprite: string;
+//             group: string;
+//             x: number;
+//             y: number;
+//             w: number;
+//             h: number;
+//           };
+//         }
+//       ];
+//     };
+//   };
+// }

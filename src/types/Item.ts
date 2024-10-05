@@ -4,6 +4,7 @@ export interface Item {
   data: {
     [key: string]: {
       name: string;
+      plaintext: string;
       image: {
         full: string;
         sprite: string;
@@ -16,9 +17,6 @@ export interface Item {
       gold: {
         total: number;
         sell: number;
-      };
-      stats: {
-        FlatMovementSpeedMod: number;
       };
     };
   };

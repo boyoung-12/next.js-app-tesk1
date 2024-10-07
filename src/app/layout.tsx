@@ -30,10 +30,21 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <header className="bg-red-500 h-16 flex justify-around items-center">
-          <Link href={"/"}>홈</Link>
-          <Link href={"/champions"}>챔피언 목록</Link>
-          <Link href={"/items"}>아이템 목록</Link>
-          <Link href={"/rotation"}>챔피언 로테이션</Link>
+          <Link href={"/"} className="text-lg font-semibold text-white">
+            홈
+          </Link>
+          <Link
+            href={"/champions"}
+            className="text-lg font-semibold text-white"
+          >
+            챔피언 목록
+          </Link>
+          <Link href={"/items"} className="text-lg font-semibold text-white">
+            아이템 목록
+          </Link>
+          <Link href={"/rotation"} className="text-lg font-semibold text-white">
+            챔피언 로테이션
+          </Link>
         </header>
         {children}
       </body>

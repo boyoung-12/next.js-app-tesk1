@@ -50,12 +50,14 @@ const RotationPage = () => {
 
   return (
     <div>
-      <div className="flex pt-5 pb-5 text-3xl">이번주 무료 챔피언</div>
+      <div className="flex pt-5 pb-5 text-3xl pl-[75px] font-bold text-red-600">
+        이번주 무료 챔피언
+      </div>
       <div className="flex flex-wrap gap-10 justify-center">
         {filteredChampion.map((champion) => (
           <div
             key={champion.key}
-            className="flex flex-col w-72 h-72 bg-red-300 items-center justify-evenly"
+            className="flex flex-col w-72 h-72 items-center justify-evenly border-[3px] rounded-md border-red-600"
           >
             <Image
               width={200}
@@ -64,9 +66,9 @@ const RotationPage = () => {
               alt={champion.id}
             />
 
-            <div className="flex flex-col items-center gap-3">
-              <h1>{champion.name}</h1>
-              <h2>{champion.title}</h2>
+            <div className="flex flex-col items-center gap-1">
+              <h1 className="text-lg font-bold">{champion.name}</h1>
+              <h2 className="font-bold  text-gray-600">{champion.title}</h2>
             </div>
           </div>
         ))}

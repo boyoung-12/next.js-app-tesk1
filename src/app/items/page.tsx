@@ -37,12 +37,14 @@ const ItemsPage = async () => {
 
   return (
     <div className="flex flex-col w-full">
-      <div className="flex pt-5 pb-5 text-3xl">아이템 목록</div>
+      <div className="flex pt-5 pb-5 text-3xl pl-[75px] font-bold text-red-600">
+        아이템 목록
+      </div>
       <div className="flex flex-wrap gap-10 justify-center">
         {data.map((item) => (
           <div
             key={randomUUID()}
-            className="bg-red-400 w-44 h-72 justify-center items-center"
+            className="flex flex-col w-44 h-72 items-center justify-evenly px-2 border-[3px] rounded-md border-red-600"
             // 이거 왜 중간 정렬 안됨?
           >
             <Image
@@ -51,10 +53,12 @@ const ItemsPage = async () => {
               src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${item.image.full}`}
               alt={item.name}
             />
-            <h1 className="text-xl">{item.name}</h1>
-            <p>{item.plaintext}</p>
-            <p className="text-sm">가격:{item.gold.total}</p>
-            <p className="text-sm">팔때:{item.gold.sell}</p>
+            <h1 className="text-xl font-bold text-red-600">{item.name}</h1>
+            <div className="h-14 font-bold text-green-500 text-center overflow-y-auto">
+              {item.plaintext}
+            </div>
+            <p className="text-sm font-bold">가격:{item.gold.total}</p>
+            <p className="text-sm font-bold">팔때:{item.gold.sell}</p>
           </div>
         ))}
       </div>

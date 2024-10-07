@@ -1,6 +1,6 @@
 "use server";
 
-import { Champion, ChampionDetail } from "../types/Champion";
+import { ChampionData, ChampionDetail } from "../types/Champion";
 import { Item } from "../types/Item";
 
 //try catch는 컴포넌트에서 사용해줘야한다.
@@ -36,9 +36,9 @@ export async function getChampions() {
     return { message: "에러입니다" };
   }
 
-  const response: Champion = await res.json();
+  const response = await res.json();
 
-  const championsArray = Object.values(response.data);
+  const championsArray: ChampionData[] = Object.values(response.data);
 
   return { data: championsArray };
 }
@@ -70,6 +70,10 @@ export async function getItems() {
     {}
   );
 
+  if (!res.ok) {
+    return { message: "에러입니다" };
+  }
+
   const response: Item = await res.json();
 
   const ItemsArray = Object.values(response.data);
@@ -85,7 +89,3 @@ export async function getItems() {
 //     "abc": "123"
 //     }
 //     }
-
-// 로테이션(넘버)이랑 챔피언목록(스트링)이랑 서로 타입이 다르기 때문에 이거 일치시켜줘야되고 나중에
-// 그리고 챔피언 key값이 key가 로테이션에서 key값 freeChampionIds와 똑같은거임 이부분 주의해서 일치시켜줘야함
-//     Object.values(obj) 이렇게 해주면 객체로 되어있는 형식을 배열로 만들어줌

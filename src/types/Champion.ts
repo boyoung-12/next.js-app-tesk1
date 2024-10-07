@@ -30,7 +30,7 @@ export interface ChampionDetail {
   };
 }
 
-interface ChampionData {
+export interface ChampionData {
   id: string;
   key: string;
   name: string;
@@ -66,40 +66,3 @@ interface ChampionData {
 export interface PropsForChampionDetail {
   params: { id: string };
 }
-
-// export interface ChampionDetail {
-//   data: {
-//     [key: string]: {
-//       id: string;
-//       key: string;
-//       name: string;
-//       title: string;
-//       image: {
-//         full: string;
-//         sprite: string;
-//         group: string;
-//         x: number;
-//         y: number;
-//         w: number;
-//         h: number;
-//       };
-//       lore: string;
-//       spells: [
-//         {
-//           id: string;
-//           name: string;
-//           description: string;
-//           image: {
-//             full: string;
-//             sprite: string;
-//             group: string;
-//             x: number;
-//             y: number;
-//             w: number;
-//             h: number;
-//           };
-//         }
-//       ];
-//     };
-//   };
-// }

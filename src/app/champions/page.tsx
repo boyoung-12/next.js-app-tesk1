@@ -7,36 +7,45 @@ import Image from "next/image";
 
 export const revalidate = 86400;
 
+//ISR
 const ChampionsPage = async () => {
-  const { data } = await getChampions();
   const version = await getVersions();
+  const res = await getChampions();
+
+  if (res.message) {
+    return res.message;
+  }
+
+  if (!res.data) {
+    return <div>Loading...</div>;
+  }
+
+  const data = res.data;
 
   return (
-    <div className="max-w-screen-xl">
-      <div className="flex flex-col w-full ">
-        <div className="flex pt-5 pb-5 text-3xl">챔피언목록</div>
-        <div className="flex flex-wrap gap-10 justify-center">
-          {data?.map((champion) => (
-            <Link
-              href={`/champions/${champion.id}`}
-              key={champion.key}
-              className="flex flex-col w-72 h-72 bg-red-300 items-center justify-evenly"
-            >
-              <Image
-                width={200}
-                height={200}
-                src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champion.id}.png`}
-                alt={champion.id}
-              />
-              {/* w-40 h-40 bg-red-900 */}
+    <div>
+      <div className="flex pt-5 pb-5 text-3xl">챔피언목록</div>
+      <div className="flex flex-wrap gap-10 justify-center ">
+        {data.map((champion) => (
+          <Link
+            href={`/champions/${champion.id}`}
+            key={champion.key}
+            className="flex flex-col w-72 h-72 bg-red-300 items-center justify-evenly"
+          >
+            <Image
+              priority
+              width={200}
+              height={200}
+              src={`https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champion.id}.png`}
+              alt={champion.id}
+            />
 
-              <div className="flex flex-col items-center gap-3">
-                <h1>{champion.name}</h1>
-                <h2>{champion.title}</h2>
-              </div>
-            </Link>
-          ))}
-        </div>
+            <div className="flex flex-col items-center gap-3">
+              <h1>{champion.name}</h1>
+              <h2>{champion.title}</h2>
+            </div>
+          </Link>
+        ))}
       </div>
     </div>
   );

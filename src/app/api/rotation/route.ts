@@ -15,6 +15,8 @@ export async function GET() {
       }
     );
     const data: Rotation = await res.json();
+    console.log("res", res);
+    console.log("data", data);
     return NextResponse.json({ data });
   } catch (error) {
     return NextResponse.json(
@@ -31,7 +33,7 @@ export async function GET() {
 //주소창에 여기 경로를 입력하는 순간 ex)http://localhost:3000/api/rotation
 //여기 경로에 있는 get함수가 실행 되는 것임(원래 주소창에 입력하면 default 함수가 get임).
 //그래서 이 함수 안에 있는 fetch로 인해 엔트포인트에 있는 데이터가 불러와지고 (api key를 header에 넣어줘야 가져올수있음)
-//그 데이터들이 내가 설정한 type(data: Rotation )에 맞춰서 response 안에 들어가져서 정보들을 가져올 수 있다.
+//그 데이터들이 내가 설정한 type (data: Rotation )에 맞춰서 response 안에 들어가져서 정보들을 가져올 수 있다.
 //여기서 { data } 이렇게 객체형태로 감싸주는 이유는 뭐였더라,,
 
 //여기서 이 경로안에 get뿐만아니라 post patch push와 같은 함수들이있다고 했을때 이건 어떻게 동작할까?

@@ -41,7 +41,7 @@ https://next-js-app-tesk1.vercel.app/champions
  ┗ 📂utils
  ┃ ┗ 📜serverApi.ts
 ```
-
+</details>
 <br>
 
 ## 개발환경

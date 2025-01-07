@@ -40,7 +40,6 @@ https://next-js-app-tesk1.vercel.app/champions
  ┃ ┗ 📜Item.ts
  ┗ 📂utils
  ┃ ┗ 📜serverApi.ts
-
 ```
 
 <br>
